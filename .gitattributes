@@ -1,2 +1,19 @@
-# Auto detect text files and perform LF normalization
+# Forzar detección automática de archivos de texto
 * text=auto
+
+# Asegurar que archivos de script siempre usen LF (formato Unix)
+# Esto evita que fallen en Linux/Mac si se editaron en Windows
+*.sh text eol=lf
+*.py text eol=lf
+*.js text eol=lf
+
+# Asegurar que archivos por lotes de Windows siempre usen CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Marcar archivos binarios (no deben normalizarse)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.pdf binary
