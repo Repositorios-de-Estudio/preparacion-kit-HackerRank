@@ -7,23 +7,12 @@ import re
 import sys
 
 
-
-def convertToList(yy):
-    nums = []
-
-    for e in yy:
-        nums.append(int(e))
-    return nums
-
-
 def sumedigitos(mm):
-    print(">>> sumedigitos", mm)
 
     sumatoria = 0
 
     for e in mm:
         sumatoria += int(e)
-    print(">>> sumedigitos, sumatoria: ", sumatoria)
 
     return sumatoria
 
@@ -37,20 +26,17 @@ def sumedigitos(mm):
 #  2. INTEGER k
 #
 def superDigit(x):
-    digitos = convertToList(str(x))
-    print(">>> digitos", digitos)
+    #digitos = convertToList(str(x))
     result = 0
 
-    if len(digitos) < 2:
-        print(">>> if", digitos)
+    if len(x) <= 1:
 
-        result = digitos[0]
+        result = int(x)
     else:
-        print(">>> else", digitos)
-        result = sumedigitos(digitos)
+        result = sumedigitos(x)
 
         if result > 9:
-            result = superDigit(result)
+            result = superDigit(str(result))
 
     return result
 
