@@ -7,14 +7,14 @@ import re
 import sys
 
 
-def sumedigitos(mm):
+def sumedigitos(mm, kk):
 
     sumatoria = 0
 
     for e in mm:
         sumatoria += int(e)
 
-    return sumatoria
+    return sumatoria*kk
 
 #
 # Complete the 'superDigit' function below.
@@ -25,7 +25,7 @@ def sumedigitos(mm):
 #  1. STRING x
 #  2. INTEGER k
 #
-def superDigit(x):
+def superDigit(x, k):
     #digitos = convertToList(str(x))
     result = 0
 
@@ -33,10 +33,10 @@ def superDigit(x):
 
         result = int(x)
     else:
-        result = sumedigitos(x)
+        result = sumedigitos(x, k)
 
         if result > 9:
-            result = superDigit(str(result))
+            result = superDigit(str(result), 1)
 
     return result
 
@@ -50,7 +50,7 @@ if __name__ == '__main__':
 
     k = int(first_multiple_input[1])
 
-    result = superDigit(n*k)
+    result = superDigit(n, k)
 
     fptr.write(str(result) + '\n')
 
@@ -58,9 +58,11 @@ if __name__ == '__main__':
 
 
 
+####
+#alguna forma de hacer la sum(x)*k, parece evitar hacer la sum(x*k) que es mucho mas grande
+# por eso multiplico la suma de x por k en sumedigitos() en vez de calcular la suma de x*k, porque
+# sum(x*k)=sum(x)*k, y este ultimo es mucho mas rapido de calcular al ser una multiplicacion de enteros
 
 
-#print(digisum(9875))
-#print(digisum(9875987598759875))
 #print(superDigit(str(9875)*4))
 #print(superDigit("9875987598759875"*16))
